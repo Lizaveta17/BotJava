@@ -9,7 +9,7 @@ public class Logic {
         Data data = new Data();
     }
 
-    private String setAsFormatString(Set<String> set) {
+    String setAsFormatString(Set<String> set) {
         return set.stream().sorted().collect(Collectors.joining(", ")) + ".";
     }
 
