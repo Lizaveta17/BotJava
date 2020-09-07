@@ -32,11 +32,22 @@ public class Data {
             for (int i = 1; i < list.size(); ) {
                 HashMap<String, String> recipes = new HashMap<>();
                 while (!list.get(i).equals("0")) {
-                    recipes.put(list.get(i), list.get(i + 1));
-                    i += 2;
+                    String dish = list.get(i);
+                    i++;
+                    StringBuilder recipe = new StringBuilder();
+                    while (!list.get(i).equals("&")) {
+                        if (list.get(i).equals("ИНСТРУКЦИЯ ПО ПРИГОТОВЛЕНИЮ:")) {
+                            recipe.append("\n");
+                        }
+                        recipe.append(list.get(i)).append("\n");
+                        i++;
+                    }
+                    recipe.append("\n").append("Приятного аппетита!");
+                    recipes.put(dish, recipe.toString());
+                    i++;
                 }
                 types.put(list.get(indexOfType), recipes);
-                indexOfType += i + 1;
+                indexOfType += (i - indexOfType) + 1;
                 i += 2;
             }
         } catch (Exception ex) {
