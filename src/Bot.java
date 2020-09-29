@@ -15,13 +15,12 @@ public class Bot {
         System.out.println(strOut);
     }
 
-    public static void main(String[] args) {
-        Bot bot = new Bot();
+    public void start() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            String strIn = bot.readIn(scanner);
-            String strOut = bot.logic.getAnswer(strIn);
-            bot.printOut(strOut);
+            String strIn = readIn(scanner);
+            String strOut = logic.getAnswer(strIn);
+            printOut(strOut);
         }
     }
 }

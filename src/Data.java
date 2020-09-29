@@ -5,13 +5,8 @@ import java.util.Scanner;
 
 public class Data {
     private static HashMap<String, HashMap<String, String>> types = new HashMap<>();
-    static String start;
-    static String help;
 
     public Data() {
-        start = "Привет! Здесь вы можете узнать рецепт интересуещего вас блюда.\n" +
-                "Чтобы получить рецепт, напишите \"Узнать рецепт\".Если что-то пойдет не так, напишите \"Помощь\".";
-        help = "Чтобы получить рецепт, напишите \"Узнать рецепт\".";
         loadTypes();
     }
 

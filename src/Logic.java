@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 public class Logic {
     private String type;
+    private boolean start = false;
 
     public Logic() {
         Data data = new Data();
@@ -16,9 +17,10 @@ public class Logic {
     public String getAnswer(String question) {
         switch (question) {
             case "Старт":
-                return Data.start;
+                start = true;
+                return BaseCommands.start;
             case "Помощь":
-                return Data.help;
+                return BaseCommands.help;
             case "Узнать рецепт":
                 Set<String> keys = Data.getTypes().keySet();
                 return "Выберите из списка: " + setAsFormatString(keys);
@@ -30,10 +32,12 @@ public class Logic {
                 } else if (type != null) {
                     HashMap<String, String> dishes = Data.getTypes().get(type);
                     if (dishes.containsKey(question)) {
+                        type = null;
                         return dishes.get(question);
                     }
                     return "Выберите блюдо: " + setAsFormatString(dishes.keySet());
-                } else return "Чтобы начать, напишите \"Старт\".";
+                } else if (start) return BaseCommands.help;
+                        else return "Чтобы начать, напишите \"Старт\".";
         }
     }
 }
