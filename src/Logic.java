@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 public class Logic {
     private String type;
-    private boolean start = false;
+    private HashMap<Long, String> idTypes = new HashMap<>();
 
     public Logic() {
         Data data = new Data();
@@ -14,11 +14,11 @@ public class Logic {
         return set.stream().sorted().collect(Collectors.joining(", ")) + ".";
     }
 
-    public String getAnswer(String question) {
+    public String getAnswer(Long id, String question) {
         switch (question) {
-            case "Старт":
-                start = true;
+            case "/start":
                 return BaseCommands.start;
+            case "/help":
             case "Помощь":
                 return BaseCommands.help;
             case "Узнать рецепт":
@@ -26,18 +26,19 @@ public class Logic {
                 return "Выберите из списка: " + setAsFormatString(keys);
             default:
                 if (Data.getTypes().containsKey(question)) {
-                    type = question;
-                    Set<String> dishes = Data.getTypes().get(question).keySet();
+                    if (!idTypes.containsKey(id)) {
+                        idTypes.put(id, question);
+                    }
+                    Set<String> dishes = Data.getTypes().get(idTypes.get(id)).keySet();
                     return "Выберите блюдо: " + setAsFormatString(dishes);
-                } else if (type != null) {
-                    HashMap<String, String> dishes = Data.getTypes().get(type);
+                } else if (idTypes.containsKey(id)) {
+                    HashMap<String, String> dishes = Data.getTypes().get(idTypes.get(id));
                     if (dishes.containsKey(question)) {
-                        type = null;
-                        return dishes.get(question);
+                        idTypes.remove(id);
+                        return question + '\n' + '\n' + dishes.get(question);
                     }
                     return "Выберите блюдо: " + setAsFormatString(dishes.keySet());
-                } else if (start) return BaseCommands.help;
-                        else return "Чтобы начать, напишите \"Старт\".";
+                } else return BaseCommands.help;
         }
     }
 }
