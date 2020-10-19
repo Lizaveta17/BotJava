@@ -1,3 +1,6 @@
+package Logic;
+
+import Data.LoaderCongFile;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -8,6 +11,7 @@ public class Bot extends TelegramLongPollingBot {
 
     public Bot() {
         logic = new Logic();
+        LoaderCongFile.loadConfFile();
     }
 
     @Override
@@ -27,11 +31,11 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "@chef_2020_bot";
+        return LoaderCongFile.getUserName();
     }
 
     @Override
     public String getBotToken() {
-        return "1312745737:AAGXEjm7VFQ5sNfxd0yIFJsnpuzmo8-yWI8";
+        return LoaderCongFile.getToken();
     }
 }

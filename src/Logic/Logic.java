@@ -1,27 +1,31 @@
+package Logic;
+
+import Data.Data;
+import Data.BaseAnswers;
+import Data.BaseCommands;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Logic {
-    private String type;
     private HashMap<Long, String> idTypes = new HashMap<>();
 
     public Logic() {
         Data data = new Data();
     }
 
-    String setAsFormatString(Set<String> set) {
+    public String setAsFormatString(Set<String> set) {
         return set.stream().sorted().collect(Collectors.joining(", ")) + ".";
     }
 
     public String getAnswer(Long id, String question) {
-        switch (question) {
-            case "/start":
-                return BaseCommands.start;
-            case "/help":
-            case "Помощь":
-                return BaseCommands.help;
-            case "Узнать рецепт":
+        switch (BaseCommands.getEnumByTitle(question)) {
+            case START:
+                return BaseAnswers.START;
+            case HELP_EN:
+            case HELP_RUS:
+                return BaseAnswers.HELP;
+            case RECIPE:
                 Set<String> keys = Data.getTypes().keySet();
                 return "Выберите из списка: " + setAsFormatString(keys);
             default:
@@ -38,7 +42,7 @@ public class Logic {
                         return question + '\n' + '\n' + dishes.get(question);
                     }
                     return "Выберите блюдо: " + setAsFormatString(dishes.keySet());
-                } else return BaseCommands.help;
+                } else return BaseAnswers.HELP;
         }
     }
 }

@@ -1,3 +1,6 @@
+package Data;
+
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +20,8 @@ public class Data {
     public static void loadTypes() {
         ArrayList<String> list = new ArrayList<>();
         try {
-            FileReader reader = new FileReader("data.txt");
+            File file = new File("C:\\Users\\golis\\Intelij IDEA\\Java\\Bot\\src\\Data\\recipes.txt");
+            FileReader reader = new FileReader(file);
             Scanner scanner = new Scanner(reader);
             while (scanner.hasNextLine()) {
                 list.add(scanner.nextLine());
