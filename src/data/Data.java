@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import java.io.File;
 import java.io.FileReader;
@@ -20,7 +20,7 @@ public class Data {
     public static void loadTypes() {
         ArrayList<String> list = new ArrayList<>();
         try {
-            File file = new File("C:\\Users\\golis\\Intelij IDEA\\Java\\Bot\\src\\Data\\recipes.txt");
+            File file = new File("C:\\Users\\golis\\Intelij IDEA\\Java\\Bot\\src\\resources\\recipes.txt");
             FileReader reader = new FileReader(file);
             Scanner scanner = new Scanner(reader);
             while (scanner.hasNextLine()) {

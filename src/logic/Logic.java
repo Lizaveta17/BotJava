@@ -1,8 +1,8 @@
-package Logic;
+package logic;
 
-import Data.Data;
-import Data.BaseAnswers;
-import Data.BaseCommands;
+import data.Data;
+import data.BaseAnswers;
+import data.BaseCommands;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -31,6 +31,8 @@ public class Logic {
             default:
                 if (Data.getTypes().containsKey(question)) {
                     if (!idTypes.containsKey(id)) {
+                        idTypes.put(id, question);
+                    }else if (!idTypes.get(id).equals(question)){
                         idTypes.put(id, question);
                     }
                     Set<String> dishes = Data.getTypes().get(idTypes.get(id)).keySet();

@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 
 import java.io.File;
@@ -12,7 +12,7 @@ public class LoaderCongFile {
     public static void loadConfFile(){
         Properties loader = new Properties();
         try {
-            File file = new File("C:\\Users\\golis\\Intelij IDEA\\Java\\Bot\\src\\Data\\telegram.conf");
+            File file = new File("C:\\Users\\golis\\Intelij IDEA\\Java\\Bot\\src\\resources\\telegram.conf");
             FileReader reader = new FileReader(file);
             loader.load(reader);
             token = loader.getProperty("token");

@@ -1,8 +1,8 @@
-package Test;
+package test;
 
-import Data.Data;
-import Data.BaseAnswers;
-import Logic.Logic;
+import data.Data;
+import data.BaseAnswers;
+import logic.Logic;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 public class BaseAnswers {
     public final static String START = "Привет! Здесь ты можешь узнать рецепт интересуещего вас блюда.\n" +

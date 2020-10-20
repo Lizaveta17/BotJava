@@ -1,4 +1,4 @@
 .idea/
 out/
 *.iml
-src/Data/telegram.conf
+src/resources/telegram.conf
