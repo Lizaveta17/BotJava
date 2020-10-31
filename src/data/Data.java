@@ -23,7 +23,7 @@ public class Data {
     public static void loadTypes() {
         List<String> list = new ArrayList<>();
         try {
-            File file = new File("C:\\Users\\golis\\Intelij IDEA\\Java\\Bot\\src\\resources\\recipes.txt");
+            File file = new File("../resources/recipes.txt");
             FileReader reader = new FileReader(file);
             Scanner scanner = new Scanner(reader);
             while (scanner.hasNextLine()) {

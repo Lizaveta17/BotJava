@@ -1,7 +1,6 @@
 package logic;
 
-import data.Data;
-import data.LoaderCongFile;
+import data.LoaderConfFile;
 import data.BaseCommands;
 import data.AnswerWithKeyboard;
 
@@ -22,7 +21,7 @@ public class Bot extends TelegramLongPollingBot {
 
     public Bot() {
         Logic logic = new Logic();
-        LoaderCongFile.loadConfFile();
+        LoaderConfFile.loadConfFile();
     }
 
     private void setReplyKeyboard(SendMessage sendMessage) {
@@ -84,11 +83,11 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return LoaderCongFile.getUserName();
+        return LoaderConfFile.getUserName();
     }
 
     @Override
     public String getBotToken() {
-        return LoaderCongFile.getToken();
+        return LoaderConfFile.getToken();
     }
 }
